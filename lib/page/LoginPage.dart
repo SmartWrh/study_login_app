@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:study_login_app2/widget/LoginButton.dart';
 
 class LoginPage extends StatelessWidget {
+
   TextStyle style = new TextStyle(
       color: Color(0xff3C4859),
       fontFamily: 'Montserrat',
@@ -8,6 +10,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     TextField getTextField(String label) {
       InputBorder border = UnderlineInputBorder(
           borderSide:
@@ -34,17 +37,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 12.0),
               getTextField('Password'),
               SizedBox(height: 37.0),
-              Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(27.0)),
-                      gradient: LinearGradient(
-                          colors: [Color(0xff2796F9), Color(0xff6565D3)])),
-                  width: double.infinity,
-                  height: 54.0,
-                  child: Text('CREATE',
-                      style:
-                          style.copyWith(color: Colors.white, fontSize: 15.0))),
+              LoginButton(child: Text('CREATE', style: style.copyWith(color: Colors.white, fontSize: 15.0))),
               SizedBox(height: 41.0),
               Row(
                   children: <Widget>[
