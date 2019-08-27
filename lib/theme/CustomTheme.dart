@@ -5,11 +5,8 @@ import 'package:study_login_app2/theme/ThemeModel.dart';
 class _CustomTheme extends InheritedWidget {
   final CustomThemeState data;
 
-  _CustomTheme({
-    this.data,
-    Key key,
-    @required Widget child,
-  }) : super(key: key, child: child);
+  _CustomTheme({this.data, Key key, @required Widget child})
+      : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
@@ -27,6 +24,18 @@ class CustomTheme extends StatefulWidget {
 
   @override
   CustomThemeState createState() => CustomThemeState();
+
+  static ThemeModel of(BuildContext context) {
+    _CustomTheme inherited =
+        (context.inheritFromWidgetOfExactType(_CustomTheme) as _CustomTheme);
+    return inherited.data.theme;
+  }
+
+  static CustomThemeState instanceOf(BuildContext context) {
+    _CustomTheme inherited =
+        (context.inheritFromWidgetOfExactType(_CustomTheme) as _CustomTheme);
+    return inherited.data;
+  }
 }
 
 class CustomThemeState extends State<CustomTheme> {
@@ -41,6 +50,7 @@ class CustomThemeState extends State<CustomTheme> {
   }
 
   void changeTheme(MyThemeKeys themeKey) {
+    print(themeKey);
     setState(() {
       _model = MyThemes.getThemeFromKey(themeKey);
     });
@@ -48,6 +58,6 @@ class CustomThemeState extends State<CustomTheme> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return _CustomTheme(data: this, child: widget.child);
   }
 }

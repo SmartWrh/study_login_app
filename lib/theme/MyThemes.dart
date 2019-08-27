@@ -4,11 +4,15 @@ import 'package:study_login_app2/theme/ThemeModel.dart';
 enum MyThemeKeys { LIGHT, DARK }
 
 class MyThemes {
-  static final ThemeModel lightTheme =
-      ThemeModel(imageUrl: 'assets/images/banner.png');
+  static final ThemeModel lightTheme = ThemeModel(
+      imageUrl: 'assets/images/banner.png',
+      backgroundColor: Color(0xffffffff),
+      isDark: false);
 
-  static final ThemeModel darkTheme =
-      ThemeModel(imageUrl: 'assets/images/banner_dark.png');
+  static final ThemeModel darkTheme = ThemeModel(
+      imageUrl: 'assets/images/banner_dark.png',
+      backgroundColor: Color(0xff2B1C71),
+      isDark: true);
 
   static ThemeModel getThemeFromKey(MyThemeKeys themeKey) {
     switch (themeKey) {

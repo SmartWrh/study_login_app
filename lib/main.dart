@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:study_login_app2/page/HomePage.dart';
+import 'package:study_login_app2/theme/CustomTheme.dart';
+import 'package:study_login_app2/theme/MyThemes.dart';
 
 void main() {
 //  debugPaintSizeEnabled = true;
-  runApp(MyApp());
+//  runApp(MyApp());
+  runApp(CustomTheme(initialThemeKey: MyThemeKeys.LIGHT, child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
