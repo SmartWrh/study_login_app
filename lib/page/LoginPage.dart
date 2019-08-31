@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:study_login_app2/theme/CustomTheme.dart';
 import 'package:study_login_app2/widget/LoginButton.dart';
 
 class LoginPage extends StatelessWidget {
-//  TextStyle style = new TextStyle(
-//      color: Color(0xff3C4859),
-//      fontFamily: 'Montserrat',
-//      fontWeight: FontWeight.bold);
-  TextStyle style = new TextStyle(
-      color: Color(0xffffffff),
-      fontFamily: 'Montserrat',
-      fontWeight: FontWeight.bold);
-
   @override
   Widget build(BuildContext context) {
+    bool isDark = CustomTheme.of(context).isDark;
+
+    TextStyle style = new TextStyle(
+        color: CustomTheme.of(context).titleColor,
+        fontFamily: 'Montserrat',
+        fontWeight: FontWeight.bold);
+
+    TextStyle labelStyle = TextStyle(
+        fontSize: 13.0,
+        color: Color(isDark ? 0xffffffff : 0xff3C4859).withOpacity(0.3),
+        fontWeight: isDark ? FontWeight.normal : FontWeight.bold);
+
     TextField getTextField(String label) {
       InputBorder border = UnderlineInputBorder(
-          borderSide:
-              BorderSide(width: 0.5, color: Colors.black.withOpacity(0.3)));
+          borderSide: BorderSide(
+              width: 0.5, color: CustomTheme.of(context).borderColor));
+
       return TextField(
-          style: style.copyWith(
-              color: Color(0x4D3C4859).withOpacity(0.3), fontSize: 13.0),
-          decoration: InputDecoration(labelText: label, enabledBorder: border));
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+              labelText: label, labelStyle: labelStyle, enabledBorder: border));
     }
 
     return Container(
@@ -46,10 +51,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 41.0),
               Row(
                   children: <Widget>[
-                    Text('Already have an account?',
-                        style: style.copyWith(
-                            color: Color(0x4D3C4859).withOpacity(0.3),
-                            fontSize: 13.0)),
+                    Text('Already have an account?', style: labelStyle),
                     Text('Sign in', style: style.copyWith(fontSize: 13.0))
                   ],
                   mainAxisSize: MainAxisSize.max,

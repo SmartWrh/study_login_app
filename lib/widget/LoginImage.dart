@@ -3,21 +3,21 @@ import 'package:study_login_app2/theme/CustomTheme.dart';
 import 'package:study_login_app2/theme/MyThemes.dart';
 
 class LoginImage extends StatelessWidget {
-  double padding;
-
-  LoginImage({this.padding});
-
-  void _changeTheme(BuildContext buildContext, MyThemeKeys key) {
-    CustomTheme.instanceOf(buildContext).changeTheme(key);
-  }
-
   @override
   Widget build(BuildContext context) {
     String image = CustomTheme.of(context).imageUrl;
+    bool isDark = CustomTheme.of(context).isDark;
+    Widget child = isDark
+        ? Padding(
+            padding: const EdgeInsets.only(bottom: 32.0),
+            child: Transform.scale(
+                child: Image.asset(image, width: double.infinity),
+                scale: 1.25,
+                alignment: Alignment.bottomRight))
+        : Padding(
+            padding: EdgeInsets.symmetric(horizontal: 32.0),
+            child: Image.asset(image));
 
-    return Transform.scale(
-        child: Image.asset(image, width: double.infinity),
-        scale: 1.25,
-        alignment: Alignment.bottomRight);
+    return child;
   }
 }

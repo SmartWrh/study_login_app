@@ -6,7 +6,6 @@ import 'package:study_login_app2/theme/MyThemes.dart';
 
 void main() {
 //  debugPaintSizeEnabled = true;
-//  runApp(MyApp());
   runApp(CustomTheme(initialThemeKey: MyThemeKeys.LIGHT, child: MyApp()));
 }
 

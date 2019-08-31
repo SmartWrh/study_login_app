@@ -15,23 +15,26 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = CustomTheme.of(context).isDark;
+
     var decoration = BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(27.0)),
         gradient:
             LinearGradient(colors: [Color(0xff2796F9), Color(0xff6565D3)]));
 
-    bool isDark = CustomTheme.of(context).isDark;
+    var darkDecoration = BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(27.0)),
+        color: Color(0xffFDC500));
 
-    return InkWell(
+    return GestureDetector(
         child: Container(
             width: double.infinity,
             height: 54.0,
             alignment: Alignment.center,
             child: child,
-            decoration: decoration),
+            decoration: isDark ? darkDecoration : decoration),
         onTap: () {
-          print('onTap${isDark}');
-          _changeTheme(context,  MyThemeKeys.DARK);
+          _changeTheme(context, isDark ? MyThemeKeys.LIGHT : MyThemeKeys.DARK);
         });
   }
 }

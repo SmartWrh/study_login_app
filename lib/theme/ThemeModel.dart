@@ -2,8 +2,16 @@ import 'dart:ui';
 
 class ThemeModel {
   String imageUrl;
-  bool isDark;
   Color backgroundColor;
+  Color titleColor;
+  Color borderColor;
+  bool isDark;
 
-  ThemeModel({this.imageUrl, this.backgroundColor, this.isDark = false});
+  ThemeModel({
+    this.imageUrl,
+    this.backgroundColor,
+    this.titleColor,
+    this.borderColor,
+    this.isDark = false,
+  });
 }
